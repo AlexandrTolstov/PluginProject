@@ -15,7 +15,7 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button Grid.Column="0" Grid.Row="0" x:Name="btnRefineText_Click" Click="BtnRefineText_Click"></Button>
+        <Button Grid.Column="0" Grid.Row="0" x:Name="btnRefineText_Click" Click="BtnRefineText_Click">Обработать</Button>
         <TextBox Grid.Column="0" Grid.Row="1" x:Name="txtPhrase"></TextBox>
     </Grid>
 </Window>
