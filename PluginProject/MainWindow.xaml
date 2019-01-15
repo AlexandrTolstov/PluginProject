@@ -7,6 +7,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button Grid.Column="0" Grid.Row="0" x:Name="btnRefineText_Click" Click="BtnRefineText_Click"></Button>
+        <TextBox Grid.Column="0" Grid.Row="1" x:Name="txtPhrase"></TextBox>
     </Grid>
 </Window>
