@@ -23,15 +23,7 @@
             </MenuItem>
 
             <MenuItem x:Name="MenuPlugins" Header="Plugins">
-                <!--<MenuItem Header="1 MainWindow.xaml"
-                          IsCheckable="True"
-                          IsChecked="True"/>
-                <MenuItem Header="2 MainWindow.xaml.cs"
-                          IsCheckable="True"/>
-                <MenuItem Header="3 App.xaml"
-                          IsCheckable="True"/>
-                <MenuItem Header="4 App.xaml.cs"
-                          IsCheckable="True"/>-->
+
             </MenuItem>
         </Menu>
         <Grid>

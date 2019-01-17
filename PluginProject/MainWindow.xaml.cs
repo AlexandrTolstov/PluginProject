@@ -93,8 +93,8 @@ namespace PluginProject
             }
             /*Создание директории и считывание вайла плагина*/
 
+            //Создаем подпункты меню с названиями файлов плагинов
             MenuItem[] menuItem = new MenuItem[plugins.Count];
-
             i = 0;
             foreach (var plugin in plugins)
             {
