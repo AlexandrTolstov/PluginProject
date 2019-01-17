@@ -30,6 +30,16 @@ namespace PluginProject
             InitializeComponent();
 
             CreateMenuPlugins(); //Создаем меню со списком Плагинов
+
+            CoWorker db = new CoWorker();
+
+            //получаем объекты из бд и выводим textBox
+            var CoWork = db.Co_Workers.ToList();
+
+            foreach (var Co in CoWork)
+            {
+                txtPhrase.Text += Co.C_Name + "\n";
+            }
         }
 
         private void BtnRefineText_Click(object sender, RoutedEventArgs e)
