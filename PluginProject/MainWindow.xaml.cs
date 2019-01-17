@@ -29,8 +29,7 @@ namespace PluginProject
         {
             InitializeComponent();
 
-            //обновляем список плагинов
-            RefreshPlugins();
+            CreateMenuPlugins(); //Создаем меню со списком Плагинов
         }
 
         private void BtnRefineText_Click(object sender, RoutedEventArgs e)
@@ -44,8 +43,10 @@ namespace PluginProject
 
             txtPhrase.Text = result;
         }
-        private void RefreshPlugins()
+
+        private void CreateMenuPlugins()
         {
+            /*Создание директории и считывание вайла плагина*/
             plugins.Clear();
 
             DirectoryInfo pluginDirectory = new DirectoryInfo(pluginPath);
@@ -54,6 +55,17 @@ namespace PluginProject
                 pluginDirectory.Create(); //Создать  директорию по заданному пути
 
             string[] pluginFiles = Directory.GetFiles(pluginPath, "*.dll");
+
+            //Запоминаем имена файлов
+            string[] pluginNames = new string[pluginFiles.Length];
+            int i = 0;
+            foreach (var item in pluginFiles)
+            {
+                pluginNames[i] = System.IO.Path.GetFileName(item);
+                i++;
+            }
+            i = 0;
+
             foreach (var file in pluginFiles)
             {
                 //Загружаем сборку
@@ -61,7 +73,7 @@ namespace PluginProject
                 //ищем типы, имплементирующие наш интерфейс IPlugin,
                 //чтобы не захватить лишнего
                 var types = asm.GetTypes().Where(t => t.GetInterfaces().
-                                            Where(i => i.FullName == typeof(IPlugin).FullName).Any());
+                                            Where(z => z.FullName == typeof(IPlugin).FullName).Any());
                 //заполняем экземплярами полученных типов коллекцию плагинов
                 foreach (var type in types)
                 {
@@ -69,6 +81,18 @@ namespace PluginProject
                     plugins.Add(plugin);
                 }
             }
+            /*Создание директории и считывание вайла плагина*/
+
+            MenuItem[] menuItem = new MenuItem[plugins.Count];
+
+            i = 0;
+            foreach (var plugin in plugins)
+            {
+                menuItem[i] = new MenuItem { Header = pluginNames[i], IsCheckable = true, IsChecked = true };
+                MenuPlugins.Items.Add(menuItem[i]);
+                i++;
+            }
+            i = 0;
         }
     }
 }

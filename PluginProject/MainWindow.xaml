@@ -5,17 +5,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PluginProject"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Button Grid.Column="0" Grid.Row="0" x:Name="btnRefineText_Click" Click="BtnRefineText_Click">Обработать</Button>
-        <TextBox Grid.Column="0" Grid.Row="1" x:Name="txtPhrase"></TextBox>
-    </Grid>
+        Title="MainWindow" Height="700" Width="1300">
+    <StackPanel>
+        <Menu IsMainMenu="True">
+            <MenuItem Header="File">
+                <MenuItem Header="New">
+                    <MenuItem Header="Project..." InputGestureText="Ctrl+Shift+N"/>
+                    <MenuItem Header="File..." InputGestureText="Ctrl+N"/>
+                </MenuItem>
+                <MenuItem Header="Start Page"/>
+                <Separator/>
+                <MenuItem Header="Add">
+                    <MenuItem Header="New Project..."/>
+                    <MenuItem Header="Existing Project..."/>
+                </MenuItem>
+                <MenuItem Header="Exit" InputGestureText="Alt+F4"/>
+            </MenuItem>
+
+            <MenuItem x:Name="MenuPlugins" Header="Plugins">
+                <!--<MenuItem Header="1 MainWindow.xaml"
+                          IsCheckable="True"
+                          IsChecked="True"/>
+                <MenuItem Header="2 MainWindow.xaml.cs"
+                          IsCheckable="True"/>
+                <MenuItem Header="3 App.xaml"
+                          IsCheckable="True"/>
+                <MenuItem Header="4 App.xaml.cs"
+                          IsCheckable="True"/>-->
+            </MenuItem>
+        </Menu>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button Grid.Column="0" Grid.Row="0" x:Name="btnRefineText_Click" Click="BtnRefineText_Click">Обработать</Button>
+            <TextBox Grid.Column="0" Grid.Row="1" x:Name="txtPhrase"></TextBox>
+        </Grid>
+    </StackPanel>
 </Window>
