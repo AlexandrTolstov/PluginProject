@@ -31,14 +31,14 @@ namespace PluginProject
 
             CreateMenuPlugins(); //Создаем меню со списком Плагинов
 
-            CoWorker db = new CoWorker();
-
-            //получаем объекты из бд и выводим textBox
-            var CoWork = db.Co_Workers.ToList();
-
-            foreach (var Co in CoWork)
+            try
             {
-                txtPhrase.Text += Co.C_Name + "\n";
+                WorkersSet db = new WorkersSet();
+                CoWorkerGrid.ItemsSource = db.Co_Workers; //Связываем таблицу с БД
+            }
+            catch (Exception ex)
+            {
+                txtPhrase.Text += "\n" + ex.Message;
             }
         }
 

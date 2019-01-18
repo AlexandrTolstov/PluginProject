@@ -38,5 +38,15 @@
             <Button Grid.Column="0" Grid.Row="0" x:Name="btnRefineText_Click" Click="BtnRefineText_Click">Обработать</Button>
             <TextBox Grid.Column="0" Grid.Row="1" x:Name="txtPhrase"></TextBox>
         </Grid>
+        <DataGrid AutoGenerateColumns="False" x:Name="CoWorkerGrid">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding ID}" Header="ID" Width="40"/>
+                <DataGridTextColumn Binding="{Binding C_Name}" Header="Имя" Width="85"/>
+                <DataGridTextColumn Binding="{Binding C_Surname}" Header="Фамилия" Width="85"/>
+                <DataGridTextColumn Binding="{Binding C_Date_of_Birth}" Header="Дата рождения" Width="160"/>
+                <DataGridTextColumn Binding="{Binding C_email}" Header="email" Width="160"/>
+                <DataGridTextColumn Binding="{Binding C_adress}" Header="Адресс" Width="160"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </StackPanel>
 </Window>
