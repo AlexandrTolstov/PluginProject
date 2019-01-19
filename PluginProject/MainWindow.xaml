@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PluginProject"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="1300">
+        Title="MainWindow" Height="500" Width="800">
     <StackPanel>
         <Menu IsMainMenu="True">
-            <MenuItem Header="File">
+            <!--<MenuItem Header="File">
                 <MenuItem Header="New">
                     <MenuItem Header="Project..." InputGestureText="Ctrl+Shift+N"/>
                     <MenuItem Header="File..." InputGestureText="Ctrl+N"/>
@@ -20,33 +20,77 @@
                     <MenuItem Header="Existing Project..."/>
                 </MenuItem>
                 <MenuItem Header="Exit" InputGestureText="Alt+F4"/>
-            </MenuItem>
+            </MenuItem>-->
 
             <MenuItem x:Name="MenuPlugins" Header="Plugins">
 
             </MenuItem>
         </Menu>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Button Grid.Column="0" Grid.Row="0" x:Name="btnRefineText_Click" Click="BtnRefineText_Click">Обработать</Button>
-            <TextBox Grid.Column="0" Grid.Row="1" x:Name="txtPhrase"></TextBox>
-        </Grid>
-        <DataGrid AutoGenerateColumns="False" x:Name="CoWorkerGrid">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding ID}" Header="ID" Width="40"/>
-                <DataGridTextColumn Binding="{Binding C_Name}" Header="Имя" Width="85"/>
-                <DataGridTextColumn Binding="{Binding C_Surname}" Header="Фамилия" Width="85"/>
-                <DataGridTextColumn Binding="{Binding C_Date_of_Birth}" Header="Дата рождения" Width="160"/>
-                <DataGridTextColumn Binding="{Binding C_email}" Header="email" Width="160"/>
-                <DataGridTextColumn Binding="{Binding C_adress}" Header="Адресс" Width="160"/>
-            </DataGrid.Columns>
-        </DataGrid>
+        <GroupBox Header="Поиск"
+                  HorizontalAlignment="Left"
+                  Margin="10 20 10 10"
+                  Width="400">
+            <Grid Margin="10 10 10 10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label Grid.Column="0" Grid.Row="0" Margin="5 5 0 5">Текст для поиска:</Label>
+                <TextBox Grid.Column="1" Grid.Row="0" Margin="5 5 0 5" x:Name="txtPhrase" VerticalAlignment="Center"></TextBox>
+                <Button Grid.Column="2" Grid.Row="0" Margin="5 5 0 5" x:Name="btnRefineText_Click" Click="BtnRefineText_Click">Поиск</Button>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Результаты поиска"
+                 Margin="10 20 10 10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="85"/>
+                    <ColumnDefinition Width="85"/>
+                    <ColumnDefinition Width="160"/>
+                    <ColumnDefinition Width="160"/>
+                    <ColumnDefinition Width="160"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label x:Name="ID_Lable" Grid.Column="0" Grid.Row="0">ID</Label>
+                <Label x:Name="Name_Lable" Grid.Column="1" Grid.Row="0">Имя</Label>
+                <Label x:Name="Surname_Lable" Grid.Column="2" Grid.Row="0">Фамилия</Label>
+                <Label x:Name="Date_of_Birth_Lable" Grid.Column="3" Grid.Row="0">Дата рождения</Label>
+                <Label x:Name="email_Lable" Grid.Column="4" Grid.Row="0">email</Label>
+                <Label x:Name="adress_Lable" Grid.Column="5" Grid.Row="0">Адресс</Label>
+                
+                <TextBox x:Name="ID_TextBox" Grid.Column="0" Grid.Row="1" IsReadOnly="True"/>
+                <TextBox x:Name="Name_TextBox" Grid.Column="1" Grid.Row="1" IsReadOnly="True"/>
+                <TextBox x:Name="Surname_TextBox" Grid.Column="2" Grid.Row="1" IsReadOnly="True"/>
+                <TextBox x:Name="Date_of_Birth_TextBox" Grid.Column="3" Grid.Row="1" IsReadOnly="True"/>
+                <TextBox x:Name="email" Grid.Column="4" Grid.Row="1" IsReadOnly="True"/>
+                <TextBox x:Name="adress" Grid.Column="5" Grid.Row="1" IsReadOnly="True"/>
+            </Grid>
+        </GroupBox> 
+        <GroupBox Header="Данные"
+                  HorizontalAlignment="Left"
+                  Margin="10 20 10 10">
+            <ScrollViewer CanContentScroll="True"
+                          Margin="10 10 10 10"
+                          Height="100">
+                <DataGrid AutoGenerateColumns="False" x:Name="CoWorkerGrid">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn IsReadOnly="True" Binding="{Binding ID}" Header="ID" Width="40"/>
+                        <DataGridTextColumn IsReadOnly="True" Binding="{Binding C_Name}" Header="Имя" Width="85"/>
+                        <DataGridTextColumn IsReadOnly="True" Binding="{Binding C_Surname}" Header="Фамилия" Width="85"/>
+                        <DataGridTextColumn IsReadOnly="True" Binding="{Binding C_Date_of_Birth}" Header="Дата рождения" Width="160"/>
+                        <DataGridTextColumn IsReadOnly="True" Binding="{Binding C_email}" Header="email" Width="160"/>
+                        <DataGridTextColumn IsReadOnly="True" Binding="{Binding C_adress}" Header="Адресс" Width="160"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </ScrollViewer>
+        </GroupBox>
     </StackPanel>
 </Window>
