@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PluginProject
+namespace DBConnect
 {
-    class Worker
+    public class Worker
     {
         public int ID { get; set; }
         public string C_Name { get; set; }

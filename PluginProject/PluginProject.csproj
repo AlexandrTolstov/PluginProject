@@ -63,8 +63,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="DB\Worker.cs" />
-    <Compile Include="DB\WorkersSet.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -73,8 +71,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Entity\CoWorker.cs" />
-    <Compile Include="Entity\Co_Workers.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -108,9 +104,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PluginInterface\PluginInterface.csproj">
-      <Project>{42fdaca6-2c83-497f-8ee1-2a7abe5be1b8}</Project>
-      <Name>PluginInterface</Name>
+    <ProjectReference Include="..\DBConnect\DBConnect.csproj">
+      <Project>{895219ca-7950-46c8-85e0-f476e6d5014b}</Project>
+      <Name>DBConnect</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SearchPluginInterface\SearchPluginInterface.csproj">
+      <Project>{76dd1b00-3d21-4624-81a7-48322b52bfc0}</Project>
+      <Name>SearchPluginInterface</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PluginProject
+namespace DBConnect
 {
-    class WorkersSet
+    public class WorkersSet
     {
         public virtual List<Worker> Co_Workers { get; set; }
         public WorkersSet()

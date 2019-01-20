@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AE1A3EAC-FE3D-4CDE-A8EB-6FFE281D37C2}</ProjectGuid>
+    <ProjectGuid>{76DD1B00-3D21-4624-81A7-48322B52BFC0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TextToLower</RootNamespace>
-    <AssemblyName>TextToLower</AssemblyName>
+    <RootNamespace>SearchPluginInterface</RootNamespace>
+    <AssemblyName>SearchPluginInterface</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,8 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TextToLowerClass.cs" />
+    <Compile Include="SearchInterface.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DBConnect\DBConnect.csproj">
+      <Project>{895219ca-7950-46c8-85e0-f476e6d5014b}</Project>
+      <Name>DBConnect</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

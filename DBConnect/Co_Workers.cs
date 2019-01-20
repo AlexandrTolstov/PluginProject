@@ -1,4 +1,4 @@
-namespace PluginProject
+namespace DBConnect
 {
     using System;
     using System.Collections.Generic;

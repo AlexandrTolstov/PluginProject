@@ -14,7 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using PluginInterface;
+using SearchPluginInterface;
+using DBConnect;
 
 namespace PluginProject
 {
@@ -24,7 +25,7 @@ namespace PluginProject
     public partial class MainWindow : Window
     {
         private readonly string pluginPath = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "Plugins"); //Создаем строку из текущей директории и имяни папки (Plugins)
-        private List<IPlugin> plugins = new List<IPlugin>();
+        private List<SearchInterface> searchPlugins = new List<SearchInterface>();
         public MainWindow()
         {
             InitializeComponent();
@@ -44,20 +45,31 @@ namespace PluginProject
 
         private void BtnRefineText_Click(object sender, RoutedEventArgs e)
         {
+
+            /*-----------------------------------------------*/
+
             string result = txtPhrase.Text; //берем содержимое текстбокса
 
             //TODO: пройти по списку плагинов и дать каждому
             //обработать текст, сохрагяя результат в result
-            foreach (var plugin in plugins)
-                result = plugin.Activate(result);
+            Worker worker = new Worker();
+            foreach (var plugin in searchPlugins)
+                worker = plugin.Search(result);
 
-            txtPhrase.Text = result;
+            ID_TextBox.Text = worker.ID.ToString();
+            Name_TextBox.Text = worker.C_Name;
+            Surname_TextBox.Text = worker.C_Surname;
+            Date_of_Birth_TextBox.Text = worker.C_Date_of_Birth.ToString();
+            email_TextBox.Text = worker.C_email;
+            adress_TextBox.Text = worker.C_adress;
         }
 
         private void CreateMenuPlugins()
         {
+            /*------------------------------------------------------*/
+
             /*Создание директории и считывание вайла плагина*/
-            plugins.Clear();
+            searchPlugins.Clear();
 
             DirectoryInfo pluginDirectory = new DirectoryInfo(pluginPath);
 
@@ -83,20 +95,20 @@ namespace PluginProject
                 //ищем типы, имплементирующие наш интерфейс IPlugin,
                 //чтобы не захватить лишнего
                 var types = asm.GetTypes().Where(t => t.GetInterfaces().
-                                            Where(z => z.FullName == typeof(IPlugin).FullName).Any());
+                                            Where(z => z.FullName == typeof(SearchInterface).FullName).Any());
                 //заполняем экземплярами полученных типов коллекцию плагинов
                 foreach (var type in types)
                 {
-                    var plugin = asm.CreateInstance(type.FullName) as IPlugin;
-                    plugins.Add(plugin);
+                    var plugin = asm.CreateInstance(type.FullName) as SearchInterface;
+                    searchPlugins.Add(plugin);
                 }
             }
             /*Создание директории и считывание вайла плагина*/
 
             //Создаем подпункты меню с названиями файлов плагинов
-            MenuItem[] menuItem = new MenuItem[plugins.Count];
+            MenuItem[] menuItem = new MenuItem[searchPlugins.Count];
             i = 0;
-            foreach (var plugin in plugins)
+            foreach (var plugin in searchPlugins)
             {
                 menuItem[i] = new MenuItem { Header = pluginNames[i], IsCheckable = true, IsChecked = true };
                 MenuPlugins.Items.Add(menuItem[i]);
