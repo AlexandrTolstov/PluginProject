@@ -51,7 +51,7 @@ namespace PluginProject
             string result = txtPhrase.Text; //берем содержимое текстбокса
 
             //TODO: пройти по списку плагинов и дать каждому
-            //обработать текст, сохрагяя результат в result
+            //обработать текст, сохраняя результат в worker
             Worker worker = new Worker();
             foreach (var plugin in searchPlugins)
                 worker = plugin.Search(result);
