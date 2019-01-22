@@ -114,10 +114,13 @@ namespace PluginProject
             /*Создание директории и считывание вайла плагина*/
             //Создаем подпункты меню с названиями файлов плагинов
 
+            i = 0;
             foreach (var plugin in searchPlugins)
             {
-                menuItems.Add(new MenuItem { Header = pluginNames[i], IsCheckable = true, IsChecked = true });
+                menuItems.Add(new MenuItem { Header = pluginNames[i], IsCheckable = true, IsChecked = false });
+                i++;
             }
+            i = 0;
 
             foreach (var item in menuItems)
             {
@@ -130,8 +133,9 @@ namespace PluginProject
         {
             foreach (var item in menuItems)
             {
-                if(((MenuItem)sender).Name != item.Name)
-                    item.IsChecked = false;
+                if (((MenuItem)sender).Header == item.Header)
+                    item.IsChecked = true;
+                else item.IsChecked = false;
             }
 
             NamePlugin = ((MenuItem)sender).Header.ToString();
