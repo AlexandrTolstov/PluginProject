@@ -48,7 +48,6 @@ namespace PluginProject
 
         private void BtnRefineText_Click(object sender, RoutedEventArgs e)
         {
-
             /*-----------------------------------------------*/
 
             string result = txtPhrase.Text; //берем содержимое текстбокса
