@@ -13,7 +13,7 @@ namespace SearcheByID
         public string Name { get; }
         public SearcheByIDClass()
         {
-            Name = "Поиск по ID";
+            Name = "SearcheByID.dll";
         }
         public Worker Search(string input)
         {
