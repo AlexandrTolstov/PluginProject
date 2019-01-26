@@ -8,20 +8,6 @@
         Title="MainWindow" Height="500" Width="800">
     <StackPanel>
         <Menu IsMainMenu="True">
-            <!--<MenuItem Header="File">
-                <MenuItem Header="New">
-                    <MenuItem Header="Project..." InputGestureText="Ctrl+Shift+N"/>
-                    <MenuItem Header="File..." InputGestureText="Ctrl+N"/>
-                </MenuItem>
-                <MenuItem Header="Start Page"/>
-                <Separator/>
-                <MenuItem Header="Add">
-                    <MenuItem Header="New Project..."/>
-                    <MenuItem Header="Existing Project..."/>
-                </MenuItem>
-                <MenuItem Header="Exit" InputGestureText="Alt+F4"/>
-            </MenuItem>-->
-
             <MenuItem x:Name="MenuPlugins" Header="Plugins">
 
             </MenuItem>
